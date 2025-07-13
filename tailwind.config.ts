@@ -18,6 +18,10 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'montserrat': ['Montserrat', 'sans-serif'],
+				'lora': ['Lora', 'serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -61,7 +65,25 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				coffee: {
+					bean: 'hsl(var(--coffee-bean))',
+					cream: 'hsl(var(--coffee-cream))',
+					green: 'hsl(var(--coffee-green))',
+					gold: 'hsl(var(--coffee-gold))',
+				},
+				caribbean: {
+					blue: 'hsl(var(--caribbean-blue))',
 				}
+			},
+			backgroundImage: {
+				'gradient-coffee': 'var(--gradient-coffee)',
+				'gradient-plantation': 'var(--gradient-plantation)',
+				'gradient-hero': 'var(--gradient-hero)',
+			},
+			boxShadow: {
+				'coffee': 'var(--shadow-coffee)',
+				'warm': 'var(--shadow-warm)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
