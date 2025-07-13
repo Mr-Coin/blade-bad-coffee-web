@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
 import { Coffee, Star, Mail, Quote } from "lucide-react";
 import heroImage from "@/assets/hero-coffee-plantation.jpg";
-import authorImage from "@/assets/author-headshot.jpg";
+const authorImage = "/lovable-uploads/700ffca9-1090-4561-b75e-8b1a918474ee.png";
 
 const Home = () => {
   return (

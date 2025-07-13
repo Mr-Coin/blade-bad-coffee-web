@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Facebook, Coffee, BookOpen, Target } from "lucide-react";
-import authorImage from "@/assets/author-headshot.jpg";
+const authorImage = "/lovable-uploads/700ffca9-1090-4561-b75e-8b1a918474ee.png";
 
 const About = () => {
   return (
