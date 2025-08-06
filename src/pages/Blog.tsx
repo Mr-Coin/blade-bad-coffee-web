@@ -8,50 +8,60 @@ import {
   ExternalLink, 
   Rss,
   Edit,
-  ArrowRight
+  ArrowRight,
+  Globe,
+  BookOpen
 } from "lucide-react";
 
 const Blog = () => {
-  const samplePosts = [
+  // WordPress blog URL
+  const wordpressUrl = "https://dalethomas3.wordpress.com";
+
+  // Sample posts from Dale's WordPress blog (based on the actual content)
+  const wordpressPosts = [
     {
       id: 1,
-      title: "Why Coffee Fuels Nicky Blade's Adventures",
-      excerpt: "Exploring the deep connection between coffee culture and adventure storytelling, and how the perfect brew can inspire the perfect plot twist.",
-      date: "2024-01-15",
-      readTime: "5 min read",
-      category: "Writing Process",
-      featured: true
+      title: "He's a Cheatin' you Laddie",
+      excerpt: "A golf adventure at Turnberry Golf Course in Scotland, featuring caddies Billy and Sandy, and the challenges of playing a links-style course after years of Central Indiana golf.",
+      date: "2016-02-17",
+      readTime: "8 min read",
+      category: "Golf",
+      featured: true,
+      url: `${wordpressUrl}/2016/02/17/hes-a-cheatin-you-laddie/`
     },
     {
       id: 2,
-      title: "From Real Estate to Writing: My Journey",
-      excerpt: "The unexpected path that led me from engineering and real estate to crafting Nicky Blade's world. Sometimes the best adventures come later in life.",
-      date: "2024-01-10",
-      readTime: "8 min read",
-      category: "Personal Story",
-      featured: false
+      title: "I don't need Cotillion, I have manners!",
+      excerpt: "A humorous take on teaching manners to teenagers, featuring cotillion classes, dress codes, and the challenges of raising well-mannered boys.",
+      date: "2016-02-10",
+      readTime: "6 min read",
+      category: "Raising Boys",
+      featured: false,
+      url: `${wordpressUrl}/2016/02/10/i-dont-need-cotillion-i-have-manners/`
     },
     {
       id: 3,
-      title: "Costa Rica's Coffee Fields: The Inspiration",
-      excerpt: "A deep dive into the real Costa Rican coffee culture that inspired Bad Coffee's most vivid scenes. From plantation to cup, every detail matters.",
-      date: "2024-01-05",
-      readTime: "6 min read",
-      category: "Research",
-      featured: false
+      title: "European Beaches",
+      excerpt: "Travel adventures in southern Spain, including webcam research for writing Overcaffeinated, and the reality vs. expectations of European beach destinations.",
+      date: "2016-02-03",
+      readTime: "7 min read",
+      category: "Travel",
+      featured: false,
+      url: `${wordpressUrl}/2016/02/03/european-beaches/`
     },
     {
       id: 4,
-      title: "Character Development: Creating Nicky Blade",
-      excerpt: "The evolution of Nicky from a fictional golf trip scapegoat to a fully-realized Caribbean adventurer. Character creation insights for aspiring writers.",
-      date: "2023-12-28",
-      readTime: "7 min read",
-      category: "Writing Craft",
-      featured: false
+      title: "Nothing In-Between",
+      excerpt: "Reflections on working in San Diego, cultural differences between California and the Midwest, and the perspective of Californians who've never left the state.",
+      date: "2016-02-03",
+      readTime: "5 min read",
+      category: "Travel",
+      featured: false,
+      url: `${wordpressUrl}/2016/02/03/nothing-in-between/`
     }
   ];
 
-  const categories = ["All", "Writing Process", "Personal Story", "Research", "Writing Craft"];
+  const categories = ["All", "Golf", "Travel", "Raising Boys", "Life Advice", "Lighthouses"];
 
   return (
     <div className="min-h-screen bg-background">
@@ -60,32 +70,44 @@ const Blog = () => {
         <div className="text-center mb-16">
           <Badge className="mb-4 bg-coffee-gold text-coffee-bean">Blog</Badge>
           <h1 className="text-4xl md:text-5xl font-montserrat font-bold mb-6 bg-gradient-coffee bg-clip-text text-transparent">
-            Adventures in Writing
+            Things That Make You Go Hmmm
           </h1>
           <p className="text-xl text-muted-foreground font-lora max-w-2xl mx-auto">
-            Stories behind the stories, writing insights, and coffee-fueled inspiration
+            Life's funny sometimes - stories, adventures, and insights from Dale Thomas
           </p>
         </div>
 
-        {/* Blog Integration Notice */}
+        {/* WordPress Integration Notice */}
         <Card className="mb-12 bg-gradient-plantation text-accent-foreground">
           <CardContent className="p-8 text-center">
-            <Rss className="h-12 w-12 mx-auto mb-4" />
+            <Globe className="h-12 w-12 mx-auto mb-4" />
             <h2 className="text-2xl font-montserrat font-bold mb-4">
-              Blog Integration Ready
+              Connected to WordPress Blog
             </h2>
             <p className="mb-6 opacity-90">
-              This page is ready to connect with your existing blog or WordPress site. 
-              The posts below are sample content to demonstrate the layout.
+              This page is connected to Dale's WordPress blog at{" "}
+              <a 
+                href={wordpressUrl} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="underline hover:text-coffee-gold transition-colors"
+              >
+                dalethomas3.wordpress.com
+              </a>
+              . Click on any post to read the full article on the WordPress site.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="secondary" className="flex items-center gap-2">
-                <ExternalLink className="h-4 w-4" />
-                Connect Existing Blog
+              <Button asChild variant="secondary" className="flex items-center gap-2">
+                <a href={wordpressUrl} target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="h-4 w-4" />
+                  Visit WordPress Blog
+                </a>
               </Button>
-              <Button variant="outline" className="flex items-center gap-2 border-accent-foreground/30 text-accent-foreground hover:bg-accent-foreground/10">
-                <Edit className="h-4 w-4" />
-                WordPress Integration
+              <Button asChild variant="outline" className="flex items-center gap-2 border-accent-foreground/30 text-accent-foreground hover:bg-accent-foreground/10">
+                <a href={`${wordpressUrl}/feed/`} target="_blank" rel="noopener noreferrer">
+                  <Rss className="h-4 w-4" />
+                  RSS Feed
+                </a>
               </Button>
             </div>
           </CardContent>
@@ -106,11 +128,13 @@ const Blog = () => {
         </div>
 
         {/* Featured Post */}
-        {samplePosts.filter(post => post.featured).map((post) => (
+        {wordpressPosts.filter(post => post.featured).map((post) => (
           <Card key={post.id} className="mb-12 shadow-coffee">
             <CardContent className="p-0">
               <div className="grid md:grid-cols-2">
-                <div className="bg-gradient-plantation aspect-video md:aspect-auto"></div>
+                <div className="bg-gradient-plantation aspect-video md:aspect-auto flex items-center justify-center">
+                  <BookOpen className="h-16 w-16 text-accent-foreground" />
+                </div>
                 <div className="p-8">
                   <Badge className="mb-4 bg-coffee-gold text-coffee-bean">Featured</Badge>
                   <h2 className="text-2xl md:text-3xl font-montserrat font-bold mb-4">
@@ -130,9 +154,11 @@ const Blog = () => {
                     </div>
                     <Badge variant="outline">{post.category}</Badge>
                   </div>
-                  <Button className="bg-gradient-coffee hover:shadow-coffee">
-                    Read Full Post
-                    <ArrowRight className="h-4 w-4 ml-2" />
+                  <Button asChild className="bg-gradient-coffee hover:shadow-coffee">
+                    <a href={post.url} target="_blank" rel="noopener noreferrer">
+                      Read Full Post
+                      <ArrowRight className="h-4 w-4 ml-2" />
+                    </a>
                   </Button>
                 </div>
               </div>
@@ -142,11 +168,11 @@ const Blog = () => {
 
         {/* Blog Posts Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {samplePosts.filter(post => !post.featured).map((post) => (
+          {wordpressPosts.filter(post => !post.featured).map((post) => (
             <Card key={post.id} className="hover:shadow-warm transition-shadow duration-300">
               <CardHeader>
                 <div className="aspect-video bg-gradient-plantation rounded-lg mb-4 flex items-center justify-center">
-                  <Coffee className="h-12 w-12 text-accent-foreground" />
+                  <BookOpen className="h-12 w-12 text-accent-foreground" />
                 </div>
                 <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
                   <Calendar className="h-4 w-4" />
@@ -164,9 +190,11 @@ const Blog = () => {
                 </p>
                 <div className="flex items-center justify-between">
                   <Badge variant="outline">{post.category}</Badge>
-                  <Button variant="ghost" size="sm" className="text-accent hover:text-accent">
-                    Read More
-                    <ArrowRight className="h-4 w-4 ml-1" />
+                  <Button asChild variant="ghost" size="sm" className="text-accent hover:text-accent">
+                    <a href={post.url} target="_blank" rel="noopener noreferrer">
+                      Read More
+                      <ArrowRight className="h-4 w-4 ml-1" />
+                    </a>
                   </Button>
                 </div>
               </CardContent>
@@ -174,25 +202,28 @@ const Blog = () => {
           ))}
         </div>
 
-        {/* Newsletter Signup */}
-        <Card className="mt-16">
+        {/* WordPress Integration CTA */}
+        <Card className="mt-16 bg-gradient-plantation text-accent-foreground">
           <CardContent className="p-8 text-center">
-            <Coffee className="h-12 w-12 mx-auto mb-4 text-accent" />
+            <Rss className="h-12 w-12 mx-auto mb-4" />
             <h3 className="text-2xl font-montserrat font-bold mb-4">
-              Never Miss an Adventure
+              More Stories on WordPress
             </h3>
             <p className="text-muted-foreground mb-6 font-lora max-w-2xl mx-auto">
-              Subscribe to get the latest posts about writing, coffee culture, and Nicky Blade's world 
-              delivered straight to your inbox.
+              Discover more posts about golf adventures, travel stories, raising boys, and life's funny moments on Dale's WordPress blog.
             </p>
-            <div className="max-w-md mx-auto flex gap-2">
-              <input 
-                type="email" 
-                placeholder="Your email address" 
-                className="flex-1 px-4 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
-              />
-              <Button className="bg-gradient-coffee hover:shadow-coffee">
-                Subscribe
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild className="bg-coffee-gold text-coffee-bean hover:bg-coffee-gold/90">
+                <a href={wordpressUrl} target="_blank" rel="noopener noreferrer">
+                  <Globe className="h-4 w-4 mr-2" />
+                  Visit Full Blog
+                </a>
+              </Button>
+              <Button asChild variant="outline" className="border-accent-foreground/30 text-accent-foreground hover:bg-accent-foreground/10">
+                <a href={`${wordpressUrl}/feed/`} target="_blank" rel="noopener noreferrer">
+                  <Rss className="h-4 w-4 mr-2" />
+                  Subscribe to RSS
+                </a>
               </Button>
             </div>
           </CardContent>

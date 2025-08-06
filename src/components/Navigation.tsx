@@ -9,10 +9,9 @@ const Navigation = () => {
 
   const navItems = [
     { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Book", path: "/book" },
-    { name: "Shop", path: "/shop" },
+    { name: "Books", path: "/books" },
     { name: "Blog", path: "/blog" },
+    { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
   ];
 
@@ -56,7 +55,7 @@ const Navigation = () => {
           {/* CTA Button */}
           <div className="hidden md:block">
             <Button asChild className="bg-gradient-coffee hover:shadow-coffee transition-all duration-300">
-              <Link to="/shop">Buy Now</Link>
+              <Link to="/books">Buy Now</Link>
             </Button>
           </div>
 
@@ -97,7 +96,7 @@ const Navigation = () => {
               ))}
               <div className="pt-2">
                 <Button asChild className="w-full bg-gradient-coffee hover:shadow-coffee transition-all duration-300">
-                  <Link to="/shop" onClick={() => setIsOpen(false)}>
+                  <Link to="/books" onClick={() => setIsOpen(false)}>
                     Buy Now
                   </Link>
                 </Button>

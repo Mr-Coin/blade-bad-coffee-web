@@ -15,7 +15,7 @@ const Footer = () => {
               <span className="font-montserrat font-bold text-xl">Dale Thomas</span>
             </div>
             <p className="text-primary-foreground/80 font-lora">
-              Author of Bad Coffee, a Nicky Blade Adventure
+              Author of Dangerously Overcaffinated, a Nicky Blade Adventure
             </p>
             
             {/* Newsletter Signup */}
@@ -46,11 +46,8 @@ const Footer = () => {
               <Link to="/about" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                 About Dale
               </Link>
-              <Link to="/book" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                Bad Coffee
-              </Link>
-              <Link to="/shop" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                Shop
+              <Link to="/books" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                Books
               </Link>
               <Link to="/blog" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                 Blog

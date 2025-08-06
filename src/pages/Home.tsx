@@ -3,9 +3,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
-import { Coffee, Star, Mail, Quote } from "lucide-react";
-import heroImage from "@/assets/hero-coffee-plantation.jpg";
-const authorImage = "/lovable-uploads/700ffca9-1090-4561-b75e-8b1a918474ee.png";
+import { Coffee, Star, Mail, Quote, BookOpen, MapPin } from "lucide-react";
+import hawaiiCoffeeField1 from "@/assets/hawaii-coffee-field.jpeg";
+// Import the JPG file with explicit typing
+import hawaiiCoffeeField2 from "@/assets/hawaii-coffee-field2.JPG";
+const authorImage = "/lovable-uploads/dale-headshot.jpg";
 
 const Home = () => {
   return (
@@ -13,7 +15,7 @@ const Home = () => {
       {/* Hero Section */}
       <section 
         className="relative h-[80vh] flex items-center justify-center bg-cover bg-center"
-        style={{ backgroundImage: `url(${heroImage})` }}
+        style={{ backgroundImage: `url(${hawaiiCoffeeField1})` }}
       >
         <div className="absolute inset-0 bg-gradient-hero"></div>
         <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
@@ -21,17 +23,17 @@ const Home = () => {
             New Release
           </Badge>
           <h1 className="text-5xl md:text-7xl font-montserrat font-bold mb-6 leading-tight">
-            Join Nicky Blade in a{" "}
-            <span className="text-coffee-gold">High-Octane</span>{" "}
-            Coffee-Fueled Adventure!
+            From Engineering to{" "}
+            <span className="text-coffee-gold">Storytelling</span>{" "}
+            A Journey of Imagination
           </h1>
           <p className="text-xl md:text-2xl mb-8 font-lora text-white/90 max-w-3xl mx-auto">
-            A thrilling tale where Caribbean lifestyle meets high-stakes action, 
-            from Costa Rican coffee fields to ancient mysteries.
+            Dale Thomas, from Carmel, Indiana, a former healthcare engineer and real estate broker, 
+            turned his love for coffee and imagination into his debut novel.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button asChild size="lg" className="bg-coffee-gold text-coffee-bean hover:bg-coffee-gold/90 shadow-warm text-lg px-8">
-              <Link to="/shop">Buy Now - $4.99</Link>
+              <Link to="/books">Buy Now - $4.99</Link>
             </Button>
             <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2">
               <Mail className="h-5 w-5" />
@@ -46,6 +48,49 @@ const Home = () => {
       </section>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Journey Section */}
+        <section className="mb-20">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-montserrat font-bold mb-6 bg-gradient-coffee bg-clip-text text-transparent">
+              A Journey of Imagination
+            </h2>
+            <p className="text-lg text-muted-foreground font-lora max-w-2xl mx-auto">
+              From healthcare engineering to real estate, and finally to storytelling - Dale's path reflects the power of following your passion
+            </p>
+          </div>
+          
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
+            <div>
+              <h3 className="text-2xl font-montserrat font-semibold mb-4 text-accent">
+                The Path to Publishing
+              </h3>
+              <p className="text-lg font-lora leading-relaxed mb-6">
+                Dale Thomas chose self-publishing to get his debut novel out in the world more quickly than with mainstream publishing. 
+                This decision reflects his practical approach to life - when you have a story to tell, you tell it.
+              </p>
+              <p className="text-lg font-lora leading-relaxed mb-6">
+                Find his novel on Amazon, where readers can discover the coffee-fueled adventures of Nicky Blade, 
+                a character born from Dale's imagination and love for the perfect brew.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button asChild className="bg-gradient-coffee">
+                  <Link to="/books">Find on Amazon</Link>
+                </Button>
+                <Button asChild variant="outline">
+                  <Link to="/about">Read Full Story</Link>
+                </Button>
+              </div>
+            </div>
+            <div>
+              <img 
+                src={hawaiiCoffeeField2} 
+                alt="Hawaii Coffee Field" 
+                className="rounded-lg shadow-coffee w-full"
+              />
+            </div>
+          </div>
+        </section>
+
         {/* Book Teaser */}
         <section className="mb-20">
           <div className="text-center mb-12">
@@ -62,14 +107,14 @@ const Home = () => {
               <Quote className="h-12 w-12 text-accent mb-6 mx-auto" />
               <p className="text-lg md:text-xl font-lora leading-relaxed text-center mb-8">
                 "Meet Nicky Blade, one part pirate, one part businessman, shaken like a margarita. 
-                In <strong>Bad Coffee, a Nicky Blade Adventure</strong>, a South American socialist leader 
+                In <strong>Dangerously Overcaffinated, a Nicky Blade Adventure</strong>, a South American socialist leader 
                 funds global terrorism, threatening the U.S. financial system. From Costa Rican coffee 
                 fields to a Dead Sea Scrolls mystery, Nicky's carefree Caribbean lifestyle meets 
                 high-stakes action."
               </p>
               <div className="text-center">
                 <Button asChild size="lg" variant="outline" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground">
-                  <Link to="/book">Discover the Adventure</Link>
+                  <Link to="/books">Discover the Adventure</Link>
                 </Button>
               </div>
             </CardContent>
@@ -87,11 +132,14 @@ const Home = () => {
                 Dale Thomas
               </h3>
               <p className="text-lg font-lora leading-relaxed mb-6">
-                Dale Thomas, 55, a former engineer and real estate broker from Carmel, Indiana, 
-                turned his love for coffee and imagination into his debut novel. Inspired by a 
-                fictional scapegoat from golf trips and coffee houses, Dale crafts a thrilling 
-                tale at 50+.
+                From Carmel, Indiana, Dale's journey spans healthcare engineering, real estate brokerage, 
+                and now storytelling. His debut novel represents the culmination of a life lived with 
+                imagination and a love for coffee culture.
               </p>
+              <div className="flex items-center gap-2 text-muted-foreground mb-4">
+                <MapPin className="h-4 w-4" />
+                <span>Carmel, Indiana</span>
+              </div>
               <Button asChild variant="outline">
                 <Link to="/about">Read Full Bio</Link>
               </Button>
@@ -104,6 +152,25 @@ const Home = () => {
               />
             </div>
           </div>
+        </section>
+
+        {/* Publishing Choice */}
+        <section className="mb-20">
+          <Card className="bg-gradient-plantation text-accent-foreground">
+            <CardContent className="p-8 md:p-12 text-center">
+              <BookOpen className="h-16 w-16 mx-auto mb-6" />
+              <h3 className="text-2xl md:text-3xl font-montserrat font-bold mb-4">
+                Why Self-Publishing?
+              </h3>
+              <p className="text-lg font-lora mb-4">
+                Dale chose self-publishing to get his debut novel out in the world more quickly than with mainstream publishing. 
+                This decision reflects his practical approach to life - when you have a story to tell, you tell it.
+              </p>
+              <p className="text-sm opacity-80">
+                Find his novel on Amazon, where readers can discover the coffee-fueled adventures of Nicky Blade.
+              </p>
+            </CardContent>
+          </Card>
         </section>
 
         {/* Social Proof */}
