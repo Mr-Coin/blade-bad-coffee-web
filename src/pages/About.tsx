@@ -43,14 +43,14 @@ const About = () => {
                 </h3>
                 <div className="space-y-3">
                   <Button variant="outline" size="sm" className="w-full justify-start" asChild>
-                    <a href="http://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.facebook.com/dalethomas3/" target="_blank" rel="noopener noreferrer">
                       <Facebook className="h-4 w-4 mr-2" />
                       Facebook
                     </a>
                   </Button>
                   <div className="text-sm text-muted-foreground space-y-1">
-                    <p><strong>Email:</strong> dale@dalethomas.com</p>
-                    <p><strong>Phone:</strong> 317.216.3785</p>
+                    <p><strong>Email:</strong> dethomas3@att.net</p>
+                    <p><strong>Phone:</strong> 317.374.6876</p>
                     <p><strong>Location:</strong> Carmel, Indiana</p>
                   </div>
                 </div>

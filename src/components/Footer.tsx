@@ -68,7 +68,7 @@ const Footer = () => {
                 className="text-primary-foreground hover:bg-primary-foreground/10"
                 asChild
               >
-                <a href="http://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.facebook.com/dalethomas3/" target="_blank" rel="noopener noreferrer">
                   <Facebook className="h-5 w-5" />
                 </a>
               </Button>
@@ -78,7 +78,7 @@ const Footer = () => {
                 className="text-primary-foreground hover:bg-primary-foreground/10"
                 asChild
               >
-                <a href="#" target="_blank" rel="noopener noreferrer">
+                <a href="https://x.com/Managed_Mayhem" target="_blank" rel="noopener noreferrer">
                   <Twitter className="h-5 w-5" />
                 </a>
               </Button>
@@ -88,7 +88,7 @@ const Footer = () => {
                 className="text-primary-foreground hover:bg-primary-foreground/10"
                 asChild
               >
-                <a href="#" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.instagram.com/dalethomas3" target="_blank" rel="noopener noreferrer">
                   <Instagram className="h-5 w-5" />
                 </a>
               </Button>
@@ -97,8 +97,8 @@ const Footer = () => {
               <p>Dale Thomas</p>
               <p>3710 Zuker Court</p>
               <p>Carmel, IN 46032</p>
-              <p>317.216.3785</p>
-              <p>dale@dalethomas.com</p>
+              <p>317.374.6876</p>
+              <p>dethomas3@att.net</p>
             </div>
           </div>
         </div>
