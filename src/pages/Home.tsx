@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
 import { Coffee, Star, Mail, Quote, BookOpen, MapPin } from "lucide-react";
+import AnimatedSection from "@/components/AnimatedSection";
 import hawaiiCoffeeField1 from "@/assets/hawaii-coffee-field.jpeg";
 // Import the JPG file with explicit typing
 import hawaiiCoffeeField2 from "@/assets/hawaii-coffee-field2.JPG";
@@ -49,7 +50,7 @@ const Home = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Journey Section */}
-        <section className="mb-20">
+        <AnimatedSection className="mb-20">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-montserrat font-bold mb-6 bg-gradient-coffee bg-clip-text text-transparent">
               A Journey of Imagination
@@ -89,10 +90,10 @@ const Home = () => {
               />
             </div>
           </div>
-        </section>
+        </AnimatedSection>
 
         {/* Book Teaser */}
-        <section className="mb-20">
+        <AnimatedSection animation="slide-up" delay={200} className="mb-20">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-montserrat font-bold mb-6 bg-gradient-coffee bg-clip-text text-transparent">
               Meet Nicky Blade
@@ -119,10 +120,10 @@ const Home = () => {
               </div>
             </CardContent>
           </Card>
-        </section>
+        </AnimatedSection>
 
         {/* Author Spotlight */}
-        <section className="mb-20">
+        <AnimatedSection animation="scale-in" delay={300} className="mb-20">
           <h2 className="text-3xl md:text-4xl font-montserrat font-bold text-center mb-12">
             About the Author
           </h2>
@@ -152,11 +153,11 @@ const Home = () => {
               />
             </div>
           </div>
-        </section>
+        </AnimatedSection>
 
         {/* Publishing Choice */}
-        <section className="mb-20">
-          <Card className="bg-gradient-plantation text-accent-foreground">
+        <AnimatedSection animation="fade-in" delay={400} className="mb-20">
+          <Card className="bg-gradient-plantation text-accent-foreground hover-lift">
             <CardContent className="p-8 md:p-12 text-center">
               <BookOpen className="h-16 w-16 mx-auto mb-6" />
               <h3 className="text-2xl md:text-3xl font-montserrat font-bold mb-4">
@@ -171,16 +172,16 @@ const Home = () => {
               </p>
             </CardContent>
           </Card>
-        </section>
+        </AnimatedSection>
 
         {/* Social Proof */}
-        <section className="mb-20">
+        <AnimatedSection animation="slide-up" delay={500} className="mb-20">
           <h2 className="text-3xl md:text-4xl font-montserrat font-bold text-center mb-12">
             What Readers Say
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[1, 2, 3].map((i) => (
-              <Card key={i} className="text-center">
+              <Card key={i} className="text-center hover-lift">
                 <CardContent className="p-6">
                   <div className="flex justify-center mb-4">
                     {[...Array(5)].map((_, star) => (
@@ -197,11 +198,11 @@ const Home = () => {
               </Card>
             ))}
           </div>
-        </section>
+        </AnimatedSection>
 
         {/* Coffee Culture Callout */}
-        <section>
-          <Card className="bg-gradient-plantation text-accent-foreground">
+        <AnimatedSection animation="scale-in" delay={600}>
+          <Card className="bg-gradient-plantation text-accent-foreground hover-lift">
             <CardContent className="p-8 md:p-12 text-center">
               <Coffee className="h-16 w-16 mx-auto mb-6 text-accent-foreground" />
               <h3 className="text-2xl md:text-3xl font-montserrat font-bold mb-4">
@@ -216,7 +217,7 @@ const Home = () => {
               </p>
             </CardContent>
           </Card>
-        </section>
+        </AnimatedSection>
       </div>
     </div>
   );

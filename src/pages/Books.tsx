@@ -44,7 +44,7 @@ const Books = () => {
         {/* Dangerously Overcaffinated - Available Now */}
         <section className="mb-20">
           <div className="text-center mb-12">
-            <Badge className="mb-4 bg-green-500 text-white">Available Now</Badge>
+            <Badge className="mb-4 bg-coffee-green text-accent-foreground">Available Now</Badge>
             <h2 className="text-3xl md:text-4xl font-montserrat font-bold mb-4">
               Dangerously Overcaffinated
             </h2>
@@ -173,7 +173,7 @@ const Books = () => {
         {/* The Thirteenth Cave - In Progress */}
         <section className="mb-20">
           <div className="text-center mb-12">
-            <Badge className="mb-4 bg-yellow-500 text-white flex items-center gap-2 mx-auto">
+            <Badge className="mb-4 bg-coffee-gold text-coffee-bean flex items-center gap-2 mx-auto">
               <Clock className="h-4 w-4" />
               Coming Soon
             </Badge>
@@ -195,7 +195,7 @@ const Books = () => {
                     <p className="font-montserrat font-semibold">Cover Coming Soon</p>
                   </div>
                 </div>
-                <div className="absolute -top-4 -right-4 bg-yellow-500 text-white rounded-full p-3">
+                <div className="absolute -top-4 -right-4 bg-coffee-gold text-coffee-bean rounded-full p-3">
                   <Mountain className="h-8 w-8" />
                 </div>
               </div>
@@ -227,10 +227,10 @@ const Books = () => {
               </div>
 
               {/* Story Preview */}
-              <Card className="bg-gradient-to-br from-yellow-50 to-orange-50 border-yellow-200">
+              <Card className="bg-gradient-plantation text-accent-foreground border-accent">
                 <CardContent className="p-6">
                   <h4 className="text-xl font-montserrat font-semibold mb-4 flex items-center gap-2">
-                    <AlertCircle className="h-5 w-5 text-yellow-600" />
+                    <AlertCircle className="h-5 w-5" />
                     Story Preview
                   </h4>
                   <p className="text-lg font-lora leading-relaxed mb-4">
@@ -248,14 +248,14 @@ const Books = () => {
               {/* Coming Soon Notice */}
               <Card>
                 <CardContent className="p-6 text-center">
-                  <Clock className="h-12 w-12 mx-auto mb-4 text-yellow-500" />
+                  <Clock className="h-12 w-12 mx-auto mb-4 text-coffee-gold" />
                   <h4 className="text-xl font-montserrat font-semibold mb-2">
                     Coming Soon
                   </h4>
                   <p className="text-muted-foreground mb-4">
                     This novel is currently in progress. Sign up for updates to be notified when it's available.
                   </p>
-                  <Button variant="outline" className="border-yellow-500 text-yellow-600 hover:bg-yellow-50">
+                  <Button variant="outline" className="border-coffee-gold text-coffee-gold hover:bg-coffee-cream">
                     Get Updates
                   </Button>
                 </CardContent>

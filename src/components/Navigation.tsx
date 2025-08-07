@@ -22,7 +22,7 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50">
+    <nav className="bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50 transition-all duration-300 hover:bg-background/98">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -54,7 +54,7 @@ const Navigation = () => {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button asChild className="bg-gradient-coffee hover:shadow-coffee transition-all duration-300">
+            <Button asChild className="bg-gradient-coffee hover:shadow-coffee transition-all duration-300 hover:scale-105">
               <Link to="/books">Buy Now</Link>
             </Button>
           </div>
