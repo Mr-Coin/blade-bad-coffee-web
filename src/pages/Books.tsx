@@ -1,22 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
 import { 
   Coffee, 
-  Star, 
-  ShoppingCart, 
   Download, 
   BookOpen,
-  MapPin,
-  Compass,
-  Anchor,
   Clock,
-  AlertCircle,
   ScrollText,
   Mountain,
   ExternalLink,
-  HelpCircle
+  HelpCircle,
+  Mail
 } from "lucide-react";
 import {
   Accordion,
@@ -24,14 +18,193 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import AnimatedSection from "@/components/AnimatedSection";
 import bookCover from "@/assets/book-cover.jpg";
+
+// Book data structure for unified template
+const books = [
+  {
+    id: 1,
+    title: "Dangerously Overcaffinated",
+    subtitle: "A Nicky Blade Adventure",
+    status: "available",
+    statusLabel: "Available Now",
+    statusBadgeClass: "bg-coffee-green text-accent-foreground",
+    cover: bookCover,
+    icon: Coffee,
+    description: "Nicky Blade, a former Army Ranger turned coffee enthusiast, lives a carefree Caribbean life, but when a South American socialist leader funds global terrorism, threatening the US financial system, Nicky's pulled into a high-stakes adventure from Costa Rican coffee fields to a Dead Sea Scrolls plot. Dangerously Overcaffinated blends humor, action, a special field of chaos, and an unforgettable thriller.",
+    keyDetails: [
+      "Former Army Ranger protagonist",
+      "Caribbean adventure setting", 
+      "Coffee culture meets thriller",
+      "Action-packed storyline"
+    ],
+    pricing: {
+      digital: { price: "$4.99", format: "Kindle Edition" },
+      print: { price: "$14.99", format: "Paperback" }
+    },
+    actions: {
+      primary: { text: "Buy Digital", link: "#", variant: "default" },
+      secondary: { text: "Buy Print", link: "#", variant: "outline" }
+    }
+  },
+  {
+    id: 2,
+    title: "The Thirteenth Cave",
+    subtitle: "A Novel",
+    status: "coming-soon",
+    statusLabel: "Coming Soon",
+    statusBadgeClass: "bg-coffee-gold text-coffee-bean",
+    cover: null,
+    icon: Mountain,
+    description: "The hero, Alexandro St. Claire, believed that the Essenes stored their writings in a series of caves to protect them from the Romans and one such cave contains writings that could impact the world's view of religion. In his quest for the thirteenth cave, St. Claire stumbles upon a mystical power that a wealthy industrialist seeks that would allow him to control commerce in the Middle East.",
+    keyDetails: [
+      "Ancient mysteries and archaeology",
+      "Dead Sea Scrolls connection",
+      "Religious historical fiction",
+      "Middle East adventure"
+    ],
+    actions: {
+      primary: { text: "Get Updates", link: "#", variant: "outline" }
+    }
+  }
+];
+
+const BookTemplate = ({ book }: { book: typeof books[0] }) => {
+  const IconComponent = book.icon;
+  
+  return (
+    <AnimatedSection animation="fade-in" className="mb-20">
+      <div className="text-center mb-12">
+        <Badge className={`mb-4 ${book.statusBadgeClass} flex items-center gap-2 mx-auto w-fit`}>
+          {book.status === "coming-soon" && <Clock className="h-4 w-4" />}
+          {book.statusLabel}
+        </Badge>
+        <h2 className="text-3xl md:text-4xl font-montserrat font-bold mb-4">
+          {book.title}
+        </h2>
+        <p className="text-lg text-muted-foreground font-lora">
+          {book.subtitle}
+        </p>
+      </div>
+
+      <Card className="overflow-hidden">
+        <CardContent className="p-0">
+          <div className="grid lg:grid-cols-2">
+            {/* Book Cover Section */}
+            <div className="bg-gradient-subtle p-8 lg:p-12 flex items-center justify-center">
+              <div className="relative">
+                {book.cover ? (
+                  <img 
+                    src={book.cover} 
+                    alt={`${book.title} - Book Cover`} 
+                    className="rounded-lg shadow-coffee max-w-sm w-full"
+                  />
+                ) : (
+                  <div className="w-64 h-80 bg-gradient-plantation rounded-lg shadow-coffee flex items-center justify-center">
+                    <div className="text-center text-accent-foreground">
+                      <ScrollText className="h-16 w-16 mx-auto mb-4" />
+                      <p className="font-montserrat font-semibold">Cover Coming Soon</p>
+                    </div>
+                  </div>
+                )}
+                <div className="absolute -top-4 -right-4 bg-coffee-gold text-coffee-bean rounded-full p-3">
+                  <IconComponent className="h-8 w-8" />
+                </div>
+              </div>
+            </div>
+
+            {/* Book Details Section */}
+            <div className="p-8 lg:p-12 space-y-6">
+              <div>
+                <h3 className="text-2xl font-montserrat font-bold mb-4 text-accent">
+                  {book.status === "available" ? "The Adventure Begins" : "Ancient Mysteries Await"}
+                </h3>
+                <p className="text-lg font-lora leading-relaxed mb-6">
+                  {book.description}
+                </p>
+              </div>
+
+              {/* Key Details */}
+              <div className="grid grid-cols-2 gap-3">
+                {book.keyDetails.map((detail, index) => (
+                  <div key={index} className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="w-2 h-2 bg-coffee-gold rounded-full flex-shrink-0" />
+                    {detail}
+                  </div>
+                ))}
+              </div>
+
+              {/* Action Section */}
+              <div className="pt-6 border-t">
+                {book.status === "available" && book.pricing ? (
+                  <div>
+                    <h4 className="text-xl font-montserrat font-semibold mb-4">
+                      Get Your Copy Today
+                    </h4>
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div className="text-center p-4 border rounded-lg">
+                        <Download className="h-8 w-8 mx-auto mb-2 text-accent" />
+                        <h5 className="font-semibold mb-1">Digital Edition</h5>
+                        <p className="text-2xl font-bold text-accent mb-2">{book.pricing.digital.price}</p>
+                        <p className="text-sm text-muted-foreground mb-3">{book.pricing.digital.format}</p>
+                        <Button asChild className="w-full bg-gradient-coffee">
+                          <a href={book.actions.primary.link} target="_blank" rel="noopener noreferrer">
+                            <ExternalLink className="h-4 w-4 mr-2" />
+                            {book.actions.primary.text}
+                          </a>
+                        </Button>
+                      </div>
+                      <div className="text-center p-4 border rounded-lg">
+                        <BookOpen className="h-8 w-8 mx-auto mb-2 text-accent" />
+                        <h5 className="font-semibold mb-1">Print Edition</h5>
+                        <p className="text-2xl font-bold text-accent mb-2">{book.pricing.print.price}</p>
+                        <p className="text-sm text-muted-foreground mb-3">{book.pricing.print.format}</p>
+                        <Button asChild variant="outline" className="w-full border-accent text-accent">
+                          <a href={book.actions.secondary?.link} target="_blank" rel="noopener noreferrer">
+                            <ExternalLink className="h-4 w-4 mr-2" />
+                            {book.actions.secondary?.text}
+                          </a>
+                        </Button>
+                      </div>
+                    </div>
+                    <div className="mt-4 pt-4 border-t">
+                      <p className="text-sm text-muted-foreground text-center">
+                        Available exclusively on{" "}
+                        <a href="#" className="text-accent hover:underline">Amazon</a>
+                      </p>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="text-center">
+                    <Clock className="h-12 w-12 mx-auto mb-4 text-coffee-gold" />
+                    <h4 className="text-xl font-montserrat font-semibold mb-2">
+                      Coming Soon
+                    </h4>
+                    <p className="text-muted-foreground mb-4">
+                      This novel is currently in progress. Sign up for updates to be notified when it's available.
+                    </p>
+                    <Button variant="outline" className="border-coffee-gold text-coffee-gold hover:bg-coffee-cream">
+                      <Mail className="h-4 w-4 mr-2" />
+                      {book.actions.primary.text}
+                    </Button>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    </AnimatedSection>
+  );
+};
 
 const Books = () => {
   return (
     <div className="min-h-screen bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Header */}
-        <div className="text-center mb-16">
+        <AnimatedSection animation="fade-in" className="text-center mb-16">
           <Badge className="mb-4 bg-coffee-gold text-coffee-bean">Books</Badge>
           <h1 className="text-4xl md:text-5xl font-montserrat font-bold mb-6 bg-gradient-coffee bg-clip-text text-transparent">
             Dale Thomas Books
@@ -39,233 +212,15 @@ const Books = () => {
           <p className="text-xl text-muted-foreground font-lora max-w-2xl mx-auto">
             From coffee-fueled adventures to ancient mysteries - explore both published and upcoming works
           </p>
-        </div>
+        </AnimatedSection>
 
-        {/* Dangerously Overcaffinated - Available Now */}
-        <section className="mb-20">
-          <div className="text-center mb-12">
-            <Badge className="mb-4 bg-coffee-green text-accent-foreground">Available Now</Badge>
-            <h2 className="text-3xl md:text-4xl font-montserrat font-bold mb-4">
-              Dangerously Overcaffinated
-            </h2>
-            <p className="text-lg text-muted-foreground font-lora">
-              A Nicky Blade Adventure
-            </p>
-          </div>
+        {/* Books Grid */}
+        {books.map((book) => (
+          <BookTemplate key={book.id} book={book} />
+        ))}
 
-          <div className="grid lg:grid-cols-2 gap-12 mb-12">
-            {/* Book Cover */}
-            <div className="flex justify-center lg:justify-end">
-              <div className="relative">
-                <img 
-                  src={bookCover} 
-                  alt="Dangerously Overcaffinated, a Nicky Blade Adventure - Book Cover" 
-                  className="rounded-lg shadow-coffee max-w-md w-full"
-                />
-                <div className="absolute -top-4 -right-4 bg-coffee-gold text-coffee-bean rounded-full p-3">
-                  <Coffee className="h-8 w-8" />
-                </div>
-              </div>
-            </div>
-
-            {/* Book Details */}
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-2xl font-montserrat font-bold mb-4 text-accent">
-                  The Adventure Begins
-                </h3>
-                <p className="text-lg font-lora leading-relaxed mb-6">
-                  Nicky Blade, a former Army Ranger turned coffee enthusiast, lives a carefree 
-                  Caribbean life, but when a South American socialist leader funds global terrorism, 
-                  threatening the US financial system, Nicky's pulled into a high-stakes adventure 
-                  from Costa Rican coffee fields to a Dead Sea Scrolls plot.
-                </p>
-                <p className="text-lg font-lora leading-relaxed">
-                  <em>Dangerously Overcaffinated</em> blends humor, action, a special field of chaos, 
-                  and an unforgettable thriller.
-                </p>
-              </div>
-
-              {/* Purchase Options */}
-              <Card>
-                <CardContent className="p-6">
-                  <h4 className="text-xl font-montserrat font-semibold mb-4">
-                    Get Your Copy Today
-                  </h4>
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div className="text-center p-4 border rounded-lg">
-                      <Download className="h-8 w-8 mx-auto mb-2 text-accent" />
-                      <h5 className="font-semibold mb-1">Digital Edition</h5>
-                      <p className="text-2xl font-bold text-accent mb-2">$4.99</p>
-                      <p className="text-sm text-muted-foreground mb-3">Kindle Edition</p>
-                      <Button asChild className="w-full bg-gradient-coffee">
-                        <a href="#" target="_blank" rel="noopener noreferrer">
-                          <ExternalLink className="h-4 w-4 mr-2" />
-                          Buy on Amazon
-                        </a>
-                      </Button>
-                    </div>
-                    <div className="text-center p-4 border rounded-lg">
-                      <BookOpen className="h-8 w-8 mx-auto mb-2 text-accent" />
-                      <h5 className="font-semibold mb-1">Print Edition</h5>
-                      <p className="text-2xl font-bold text-accent mb-2">$14.99</p>
-                      <p className="text-sm text-muted-foreground mb-3">Paperback</p>
-                      <Button asChild variant="outline" className="w-full border-accent text-accent">
-                        <a href="#" target="_blank" rel="noopener noreferrer">
-                          <ExternalLink className="h-4 w-4 mr-2" />
-                          Buy on Amazon
-                        </a>
-                      </Button>
-                    </div>
-                  </div>
-                  <div className="mt-4 pt-4 border-t">
-                    <p className="text-sm text-muted-foreground text-center">
-                      Available exclusively on{" "}
-                      <a href="#" className="text-accent hover:underline">Amazon</a>
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-
-          {/* Character Spotlight */}
-          <Card className="bg-gradient-plantation text-accent-foreground">
-            <CardContent className="p-8 md:p-12">
-              <div className="text-center mb-8">
-                <Anchor className="h-16 w-16 mx-auto mb-4" />
-                <h3 className="text-3xl md:text-4xl font-montserrat font-bold mb-4">
-                  Meet Nicky Blade
-                </h3>
-                <Badge className="bg-accent-foreground/20 text-accent-foreground border-accent-foreground/30">
-                  Character Spotlight
-                </Badge>
-              </div>
-              
-              <div className="max-w-3xl mx-auto text-center">
-                <p className="text-xl md:text-2xl font-lora leading-relaxed mb-6">
-                  "One part pirate, one part businessman. His life's shaken like a margarita, 
-                  but he's always a gentleman."
-                </p>
-                
-                <div className="grid md:grid-cols-3 gap-6 mt-8">
-                  <div className="text-center">
-                    <Compass className="h-8 w-8 mx-auto mb-2" />
-                    <h4 className="font-semibold mb-2">Former Army Ranger</h4>
-                    <p className="text-sm opacity-80">Trained for high-stakes situations</p>
-                  </div>
-                  <div className="text-center">
-                    <Coffee className="h-8 w-8 mx-auto mb-2" />
-                    <h4 className="font-semibold mb-2">Coffee Connoisseur</h4>
-                    <p className="text-sm opacity-80">Passionate about the perfect brew</p>
-                  </div>
-                  <div className="text-center">
-                    <MapPin className="h-8 w-8 mx-auto mb-2" />
-                    <h4 className="font-semibold mb-2">Caribbean Spirit</h4>
-                    <p className="text-sm opacity-80">"No Problems" lifestyle advocate</p>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
-
-        {/* The Thirteenth Cave - In Progress */}
-        <section className="mb-20">
-          <div className="text-center mb-12">
-            <Badge className="mb-4 bg-coffee-gold text-coffee-bean flex items-center gap-2 mx-auto">
-              <Clock className="h-4 w-4" />
-              Coming Soon
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-montserrat font-bold mb-4">
-              The Thirteenth Cave
-            </h2>
-            <p className="text-lg text-muted-foreground font-lora">
-              A Novel
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Book Cover Placeholder */}
-            <div className="flex justify-center lg:justify-end">
-              <div className="relative">
-                <div className="w-80 h-96 bg-gradient-plantation rounded-lg shadow-coffee flex items-center justify-center">
-                  <div className="text-center text-accent-foreground">
-                    <ScrollText className="h-16 w-16 mx-auto mb-4" />
-                    <p className="font-montserrat font-semibold">Cover Coming Soon</p>
-                  </div>
-                </div>
-                <div className="absolute -top-4 -right-4 bg-coffee-gold text-coffee-bean rounded-full p-3">
-                  <Mountain className="h-8 w-8" />
-                </div>
-              </div>
-            </div>
-
-            {/* Book Details */}
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-2xl font-montserrat font-bold mb-4 text-accent">
-                  Ancient Mysteries Await
-                </h3>
-                <p className="text-lg font-lora leading-relaxed mb-6">
-                  The Essenes led a life based on Christian principles but without knowing Jesus or 
-                  the teachings of the early Christian church. They were scholars and excellent researchers. 
-                  It was initially thought that the Essenes wrote from about 150 BC to 70 AD, but now 
-                  we know their writings stretched to 100 AD.
-                </p>
-                <p className="text-lg font-lora leading-relaxed mb-6">
-                  After the Romans' destruction of the temple in 70 AD, the Sadducees tried in vain to 
-                  locate any missing caves before disappearing into history. Rabbinic Jews, taking the 
-                  place of the Pharisees, also tried in vain to locate any additional caves. In total, 
-                  twelve caves (the twelfth cave was discovered in 2017) have been discovered, and 
-                  scholars have logged, translated, and documented their fragments.
-                </p>
-                <p className="text-lg font-lora leading-relaxed">
-                  Many scholars and researchers believe that there could be many more caves due to the 
-                  Dead Sea's periodic fluctuations.
-                </p>
-              </div>
-
-              {/* Story Preview */}
-              <Card className="bg-gradient-plantation text-accent-foreground border-accent">
-                <CardContent className="p-6">
-                  <h4 className="text-xl font-montserrat font-semibold mb-4 flex items-center gap-2">
-                    <AlertCircle className="h-5 w-5" />
-                    Story Preview
-                  </h4>
-                  <p className="text-lg font-lora leading-relaxed mb-4">
-                    The hero, Alexandro St. Claire, believed that the Essenes stored their writings in 
-                    a series of caves to protect them from the Romans and one such cave contains writings 
-                    that could impact the world's view of religion.
-                  </p>
-                  <p className="text-lg font-lora leading-relaxed">
-                    In his quest for the thirteenth cave, St. Claire stumbles upon a mystical power that 
-                    a wealthy industrialist seeks that would allow him to control commerce in the Middle East.
-                  </p>
-                </CardContent>
-              </Card>
-
-              {/* Coming Soon Notice */}
-              <Card>
-                <CardContent className="p-6 text-center">
-                  <Clock className="h-12 w-12 mx-auto mb-4 text-coffee-gold" />
-                  <h4 className="text-xl font-montserrat font-semibold mb-2">
-                    Coming Soon
-                  </h4>
-                  <p className="text-muted-foreground mb-4">
-                    This novel is currently in progress. Sign up for updates to be notified when it's available.
-                  </p>
-                  <Button variant="outline" className="border-coffee-gold text-coffee-gold hover:bg-coffee-cream">
-                    Get Updates
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </section>
-
-        {/* Coffee Culture Callout */}
-        <section className="mb-20">
+        {/* Coffee Culture Corner */}
+        <AnimatedSection animation="slide-up" className="mb-16">
           <Card>
             <CardContent className="p-8 text-center">
               <Coffee className="h-12 w-12 mx-auto mb-4 text-accent" />
@@ -281,36 +236,10 @@ const Books = () => {
               </p>
             </CardContent>
           </Card>
-        </section>
-
-        {/* Reviews Placeholder */}
-        <section className="mb-20">
-          <h2 className="text-3xl md:text-4xl font-montserrat font-bold text-center mb-12">
-            Early Praise
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
-              <Card key={i}>
-                <CardContent className="p-6 text-center">
-                  <div className="flex justify-center mb-4">
-                    {[...Array(5)].map((_, star) => (
-                      <Star key={star} className="h-5 w-5 fill-coffee-gold text-coffee-gold" />
-                    ))}
-                  </div>
-                  <p className="font-lora italic mb-4">
-                    "Coming soon - readers are already buzzing about Nicky Blade's debut adventure!"
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    Review pending
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
+        </AnimatedSection>
 
         {/* FAQ Section */}
-        <section>
+        <AnimatedSection animation="fade-in">
           <Card>
             <CardHeader>
               <CardTitle className="font-montserrat flex items-center gap-2">
@@ -363,25 +292,30 @@ const Books = () => {
               </Accordion>
             </CardContent>
           </Card>
-        </section>
+        </AnimatedSection>
 
         {/* Contact Support */}
-        <Card className="bg-gradient-plantation text-accent-foreground mt-8">
-          <CardContent className="p-6 text-center">
-            <h3 className="font-montserrat font-semibold mb-2">
-              Questions About the Books?
-            </h3>
-            <p className="mb-4 opacity-80">
-              Have questions about the stories, characters, or writing process? Dale is here to help personally.
-            </p>
-            <Button variant="secondary" asChild>
-              <a href="mailto:dale@dalethomas.com">Contact Dale</a>
-            </Button>
-          </CardContent>
-        </Card>
+        <AnimatedSection animation="fade-in" className="mt-8">
+          <Card className="bg-gradient-plantation text-accent-foreground">
+            <CardContent className="p-6 text-center">
+              <h3 className="font-montserrat font-semibold mb-2">
+                Questions About the Books?
+              </h3>
+              <p className="mb-4 opacity-80">
+                Have questions about the stories, characters, or writing process? Dale is here to help personally.
+              </p>
+              <Button variant="secondary" asChild>
+                <a href="mailto:dale@dalethomas.com">
+                  <Mail className="h-4 w-4 mr-2" />
+                  Contact Dale
+                </a>
+              </Button>
+            </CardContent>
+          </Card>
+        </AnimatedSection>
       </div>
     </div>
   );
 };
 
-export default Books; 
+export default Books;
