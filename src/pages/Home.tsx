@@ -8,7 +8,7 @@ import AnimatedSection from "@/components/AnimatedSection";
 import hawaiiCoffeeField1 from "@/assets/hawaii-coffee-field.jpeg";
 // Import the JPG file with explicit typing
 import hawaiiCoffeeField2 from "@/assets/hawaii-coffee-field2.JPG";
-const authorImage = "/lovable-uploads/dale-headshot.jpg";
+const authorImage = "/marg.jpeg";
 
 const Home = () => {
   return (
@@ -34,7 +34,7 @@ const Home = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button asChild size="lg" className="bg-coffee-gold text-coffee-bean hover:bg-coffee-gold/90 shadow-warm text-lg px-8">
-              <Link to="/books">Buy Now - $4.99</Link>
+              <Link to="/books">Buy Now</Link>
             </Button>
             <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2">
               <Mail className="h-5 w-5" />
@@ -49,11 +49,11 @@ const Home = () => {
       </section>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Journey Section */}
+        {/* Path to Publishing Section */}
         <AnimatedSection className="mb-20">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-montserrat font-bold mb-6 bg-gradient-coffee bg-clip-text text-transparent">
-              A Journey of Imagination
+              The Path to Publishing
             </h2>
             <p className="text-lg text-muted-foreground font-lora max-w-2xl mx-auto">
               From healthcare engineering to real estate, and finally to storytelling - Dale's path reflects the power of following your passion
@@ -63,10 +63,10 @@ const Home = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
             <div>
               <h3 className="text-2xl font-montserrat font-semibold mb-4 text-accent">
-                The Path to Publishing
+                The Publishing Journey
               </h3>
               <p className="text-lg font-lora leading-relaxed mb-6">
-                Dale Thomas chose self-publishing to get his debut novel out in the world more quickly than with mainstream publishing. 
+                Dale Thomas chose self-publishing to get his debut novel out in the world.
                 This decision reflects his practical approach to life - when you have a story to tell, you tell it.
               </p>
               <p className="text-lg font-lora leading-relaxed mb-6">
@@ -84,10 +84,34 @@ const Home = () => {
             </div>
             <div>
               <img 
-                src={hawaiiCoffeeField2} 
-                alt="Hawaii Coffee Field" 
-                className="rounded-lg shadow-coffee w-full"
+                src="/marg.jpeg" 
+                alt="Dale Thomas, Author" 
+                className="rounded-lg shadow-coffee w-full max-w-sm mx-auto"
               />
+            </div>
+          </div>
+
+          {/* About the Author Subsection */}
+          <div className="mt-16">
+            <div>
+              <h3 className="text-2xl font-montserrat font-semibold mb-4 text-accent">
+                About the Author
+              </h3>
+              <h4 className="text-xl font-montserrat font-semibold mb-4 text-accent">
+                Dale Thomas
+              </h4>
+              <p className="text-lg font-lora leading-relaxed mb-6">
+                From Carmel, Indiana, Dale's journey spans healthcare engineering, real estate brokerage, 
+                and now storytelling. His debut novel represents the culmination of a life lived with 
+                imagination and a love for coffee culture.
+              </p>
+              <div className="flex items-center gap-2 text-muted-foreground mb-4">
+                <MapPin className="h-4 w-4" />
+                <span>Carmel, Indiana</span>
+              </div>
+              <Button asChild variant="outline">
+                <Link to="/about">Read Full Bio</Link>
+              </Button>
             </div>
           </div>
         </AnimatedSection>
@@ -103,53 +127,31 @@ const Home = () => {
             </p>
           </div>
           
-          <Card className="max-w-4xl mx-auto shadow-coffee">
-            <CardContent className="p-8 md:p-12">
-              <Quote className="h-12 w-12 text-accent mb-6 mx-auto" />
-              <p className="text-lg md:text-xl font-lora leading-relaxed text-center mb-8">
-                "Meet Nicky Blade, one part pirate, one part businessman, shaken like a margarita. 
-                In <strong>Dangerously Overcaffinated, a Nicky Blade Adventure</strong>, a South American socialist leader 
-                funds global terrorism, threatening the U.S. financial system. From Costa Rican coffee 
-                fields to a Dead Sea Scrolls mystery, Nicky's carefree Caribbean lifestyle meets 
-                high-stakes action."
-              </p>
-              <div className="text-center">
-                <Button asChild size="lg" variant="outline" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground">
-                  <Link to="/books">Discover the Adventure</Link>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </AnimatedSection>
-
-        {/* Author Spotlight */}
-        <AnimatedSection animation="scale-in" delay={300} className="mb-20">
-          <h2 className="text-3xl md:text-4xl font-montserrat font-bold text-center mb-12">
-            About the Author
-          </h2>
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="order-2 md:order-1">
-              <h3 className="text-2xl font-montserrat font-semibold mb-4 text-accent">
-                Dale Thomas
-              </h3>
-              <p className="text-lg font-lora leading-relaxed mb-6">
-                From Carmel, Indiana, Dale's journey spans healthcare engineering, real estate brokerage, 
-                and now storytelling. His debut novel represents the culmination of a life lived with 
-                imagination and a love for coffee culture.
-              </p>
-              <div className="flex items-center gap-2 text-muted-foreground mb-4">
-                <MapPin className="h-4 w-4" />
-                <span>Carmel, Indiana</span>
-              </div>
-              <Button asChild variant="outline">
-                <Link to="/about">Read Full Bio</Link>
-              </Button>
+          <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            <div>
+              <Card className="shadow-coffee">
+                <CardContent className="p-8 md:p-12">
+                  <Quote className="h-12 w-12 text-accent mb-6 mx-auto" />
+                  <p className="text-lg md:text-xl font-lora leading-relaxed text-center mb-8">
+                    "Meet Nicky Blade, one part pirate, one part businessman, shaken like a margarita. 
+                    In <strong>Dangerously Overcaffinated, a Nicky Blade Adventure</strong>, a South American socialist leader 
+                    funds global terrorism, threatening the U.S. financial system. From Costa Rican coffee 
+                    fields to a Dead Sea Scrolls mystery, Nicky's carefree Caribbean lifestyle meets 
+                    high-stakes action."
+                  </p>
+                  <div className="text-center">
+                    <Button asChild size="lg" variant="outline" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground">
+                      <Link to="/books">Discover the Adventure</Link>
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
-            <div className="order-1 md:order-2">
+            <div className="flex justify-center">
               <img 
-                src={authorImage} 
-                alt="Dale Thomas, Author" 
-                className="rounded-lg shadow-warm w-full max-w-md mx-auto"
+                src="/marg.jpeg" 
+                alt="Margarita" 
+                className="rounded-lg shadow-coffee w-full max-w-md"
               />
             </div>
           </div>

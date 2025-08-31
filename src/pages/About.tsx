@@ -8,12 +8,12 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-const authorImage = "/lovable-uploads/700ffca9-1090-4561-b75e-8b1a918474ee.png";
+const authorImage = "/marg.jpeg";
 
 const About = () => {
   return (
     <div className="min-h-screen bg-background">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Header */}
         <div className="text-center mb-16">
           <Badge className="mb-4 bg-coffee-gold text-coffee-bean">Author Spotlight</Badge>
@@ -34,6 +34,24 @@ const About = () => {
               className="rounded-lg shadow-coffee w-full max-w-md mx-auto md:mx-0"
             />
             
+            {/* Writing Philosophy */}
+            <Card className="bg-gradient-plantation text-accent-foreground">
+              <CardContent className="p-6">
+                <h3 className="text-lg font-montserrat font-semibold mb-4 flex items-center gap-2">
+                  <BookOpen className="h-5 w-5" />
+                  Writing Philosophy
+                </h3>
+                <blockquote className="font-lora text-base italic">
+                  "Imagination is the vehicle that transforms life experiences into compelling stories. 
+                  In my second half of life, I discovered that the best adventures are the ones we create, 
+                  blending real-world knowledge with the boundless possibilities of fiction."
+                </blockquote>
+                <p className="mt-3 text-sm opacity-80">
+                  - Dale Thomas, on crafting Nicky Blade's world
+                </p>
+              </CardContent>
+            </Card>
+            
             {/* Social & Contact */}
             <Card>
               <CardContent className="p-6">
@@ -43,9 +61,9 @@ const About = () => {
                 </h3>
                 <div className="space-y-3">
                   <Button variant="outline" size="sm" className="w-full justify-start" asChild>
-                    <a href="https://www.facebook.com/dalethomas3/" target="_blank" rel="noopener noreferrer">
-                      <Facebook className="h-4 w-4 mr-2" />
-                      Facebook
+                    <a href="/contact">
+                      <HelpCircle className="h-4 w-4 mr-2" />
+                      Contact
                     </a>
                   </Button>
                   <div className="text-sm text-muted-foreground space-y-1">
@@ -67,7 +85,7 @@ const About = () => {
                 </h2>
                 <div className="space-y-4 font-lora text-lg leading-relaxed">
                   <p>
-                    Born in Louisville, Kentucky, now in Carmel, Indiana, Dale Thomas, 55, 
+                    Born in Louisville, Kentucky, now in Carmel, Indiana, Dale Thomas, 
                     transitioned from engineering and real estate to writing. Inspired by 
                     Ken Dychtwald's <em>Age Wave</em> and Napoleon Hill's <em>Think and Grow Rich</em>, 
                     he set a goal to write a novel.
@@ -114,23 +132,7 @@ const About = () => {
               </CardContent>
             </Card>
 
-            {/* Philosophy */}
-            <Card className="bg-gradient-plantation text-accent-foreground">
-              <CardContent className="p-8">
-                <h3 className="text-xl font-montserrat font-semibold mb-4 flex items-center gap-2">
-                  <BookOpen className="h-5 w-5" />
-                  Writing Philosophy
-                </h3>
-                <blockquote className="font-lora text-lg italic">
-                  "Imagination is the vehicle that transforms life experiences into compelling stories. 
-                  At 50+, I discovered that the best adventures are the ones we create, 
-                  blending real-world knowledge with the boundless possibilities of fiction."
-                </blockquote>
-                <p className="mt-4 text-sm opacity-80">
-                  - Dale Thomas, on crafting Nicky Blade's world
-                </p>
-              </CardContent>
-            </Card>
+
           </div>
         </div>
 

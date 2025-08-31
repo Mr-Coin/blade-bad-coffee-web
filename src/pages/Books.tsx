@@ -40,12 +40,14 @@ const books = [
       "Action-packed storyline"
     ],
     pricing: {
-      digital: { price: "$4.99", format: "Kindle Edition" },
-      print: { price: "$14.99", format: "Paperback" }
+      digital: { price: "$9.99", format: "Kindle Edition" },
+      paperback: { price: "$16.99", format: "Paperback" },
+      hardback: { price: "$24.99", format: "Hardback" }
     },
     actions: {
-      primary: { text: "Buy Digital", link: "#", variant: "default" },
-      secondary: { text: "Buy Print", link: "#", variant: "outline" }
+      digital: { text: "Buy Digital", link: "#", variant: "default" },
+      paperback: { text: "Buy Paperback", link: "#", variant: "outline" },
+      hardback: { text: "Buy Hardback", link: "#", variant: "outline" }
     }
   },
   {
@@ -90,9 +92,9 @@ const BookTemplate = ({ book }: { book: typeof books[0] }) => {
 
       <Card className="overflow-hidden">
         <CardContent className="p-0">
-          <div className="grid lg:grid-cols-2">
+                      <div className="grid lg:grid-cols-3">
             {/* Book Cover Section */}
-            <div className="bg-gradient-subtle p-8 lg:p-12 flex items-center justify-center">
+            <div className="bg-gradient-subtle p-8 lg:p-12 flex items-center justify-center lg:col-span-1">
               <div className="relative">
                 {book.cover ? (
                   <img 
@@ -115,7 +117,7 @@ const BookTemplate = ({ book }: { book: typeof books[0] }) => {
             </div>
 
             {/* Book Details Section */}
-            <div className="p-8 lg:p-12 space-y-6">
+            <div className="p-8 lg:p-12 space-y-6 flex-1 lg:col-span-2">
               <div>
                 <h3 className="text-2xl font-montserrat font-bold mb-4 text-accent">
                   {book.status === "available" ? "The Adventure Begins" : "Ancient Mysteries Await"}
@@ -142,28 +144,40 @@ const BookTemplate = ({ book }: { book: typeof books[0] }) => {
                     <h4 className="text-xl font-montserrat font-semibold mb-4">
                       Get Your Copy Today
                     </h4>
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      <div className="text-center p-4 border rounded-lg">
+                    <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-6">
+                      <div className="text-center p-6 border rounded-lg">
                         <Download className="h-8 w-8 mx-auto mb-2 text-accent" />
                         <h5 className="font-semibold mb-1">Digital Edition</h5>
                         <p className="text-2xl font-bold text-accent mb-2">{book.pricing.digital.price}</p>
                         <p className="text-sm text-muted-foreground mb-3">{book.pricing.digital.format}</p>
-                        <Button asChild className="w-full bg-gradient-coffee">
-                          <a href={book.actions.primary.link} target="_blank" rel="noopener noreferrer">
+                        <Button asChild className="w-full bg-gradient-coffee min-h-[44px] px-8">
+                          <a href={book.actions.digital.link} target="_blank" rel="noopener noreferrer">
                             <ExternalLink className="h-4 w-4 mr-2" />
-                            {book.actions.primary.text}
+                            {book.actions.digital.text}
                           </a>
                         </Button>
                       </div>
-                      <div className="text-center p-4 border rounded-lg">
+                      <div className="text-center p-6 border rounded-lg">
                         <BookOpen className="h-8 w-8 mx-auto mb-2 text-accent" />
-                        <h5 className="font-semibold mb-1">Print Edition</h5>
-                        <p className="text-2xl font-bold text-accent mb-2">{book.pricing.print.price}</p>
-                        <p className="text-sm text-muted-foreground mb-3">{book.pricing.print.format}</p>
-                        <Button asChild variant="outline" className="w-full border-accent text-accent">
-                          <a href={book.actions.secondary?.link} target="_blank" rel="noopener noreferrer">
+                        <h5 className="font-semibold mb-1">Paperback</h5>
+                        <p className="text-2xl font-bold text-accent mb-2">{book.pricing.paperback.price}</p>
+                        <p className="text-sm text-muted-foreground mb-3">{book.pricing.paperback.format}</p>
+                        <Button asChild variant="outline" className="w-full border-accent text-accent min-h-[44px] px-8">
+                          <a href={book.actions.paperback.link} target="_blank" rel="noopener noreferrer">
                             <ExternalLink className="h-4 w-4 mr-2" />
-                            {book.actions.secondary?.text}
+                            {book.actions.paperback.text}
+                          </a>
+                        </Button>
+                      </div>
+                      <div className="text-center p-6 border rounded-lg">
+                        <BookOpen className="h-8 w-8 mx-auto mb-2 text-accent" />
+                        <h5 className="font-semibold mb-1">Hardback</h5>
+                        <p className="text-2xl font-bold text-accent mb-2">{book.pricing.hardback.price}</p>
+                        <p className="text-sm text-muted-foreground mb-3">{book.pricing.hardback.format}</p>
+                        <Button asChild variant="outline" className="w-full border-accent text-accent min-h-[44px] px-8">
+                          <a href={book.actions.hardback.link} target="_blank" rel="noopener noreferrer">
+                            <ExternalLink className="h-4 w-4 mr-2" />
+                            {book.actions.hardback.text}
                           </a>
                         </Button>
                       </div>
