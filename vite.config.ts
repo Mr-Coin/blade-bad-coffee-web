@@ -17,4 +17,9 @@ export default defineConfig(({ mode }) => ({
     },
   },
   assetsInclude: ["**/*.JPG", "**/*.jpg", "**/*.jpeg", "**/*.png", "**/*.gif", "**/*.svg", "**/*.webp"],
+  base: "/",
+  build: {
+    outDir: "docs",
+    emptyOutDir: false,
+  },
 }));

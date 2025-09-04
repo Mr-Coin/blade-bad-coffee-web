@@ -8,6 +8,7 @@ help:
 	@echo "  make build    - Build the project for production"
 	@echo "  make clean    - Clean build artifacts"
 	@echo "  make install  - Install dependencies"
+	@echo "  make deploy   - Build to docs/ and push to main for GitHub Pages"
 
 # Check if bun is available, otherwise use npm
 BUN_AVAILABLE := $(shell command -v bun 2> /dev/null)
@@ -48,3 +49,21 @@ clean:
 install:
 	@echo "Installing dependencies with $(PACKAGE_MANAGER)..."
 	$(PACKAGE_MANAGER) install 
+
+# Deploy to GitHub Pages by building into docs/ and pushing to main
+.PHONY: deploy
+deploy: build
+	@echo "Preparing GitHub Pages artifacts in docs/ ..."
+	@# Ensure docs directory exists
+	@mkdir -p docs
+	@# Create CNAME for custom domain
+	echo "www.dalethomas.com" > docs/CNAME
+	@# Ensure GitHub Pages does not run Jekyll
+	touch docs/.nojekyll
+	@# For SPA fallback on GitHub Pages, copy index.html to 404.html
+	@if [ -f docs/index.html ]; then cp docs/index.html docs/404.html; fi
+	@echo "Staging and pushing docs/ to main..."
+	@git add docs vite.config.ts Makefile
+	@# Commit if there are changes
+	@git diff --cached --quiet || git commit -m "chore: build docs for GitHub Pages and add CNAME/.nojekyll"
+	@git push origin main
