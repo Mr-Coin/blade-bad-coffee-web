@@ -8,7 +8,7 @@ import AnimatedSection from "@/components/AnimatedSection";
 import hawaiiCoffeeField1 from "@/assets/hawaii-coffee-field.jpeg";
 // Import the JPG file with explicit typing
 import hawaiiCoffeeField2 from "@/assets/hawaii-coffee-field2.JPG";
-const authorImage = "/marg.jpeg";
+const authorImage = "/dale.jpg";
 
 const Home = () => {
   return (
@@ -84,7 +84,7 @@ const Home = () => {
             </div>
             <div>
               <img 
-                src="/marg.jpeg" 
+                src="/dale.jpg" 
                 alt="Dale Thomas, Author" 
                 className="rounded-lg shadow-coffee w-full max-w-sm mx-auto"
               />

@@ -29,36 +29,6 @@ const Blog = () => {
       featured: true,
       url: `${wordpressUrl}/2016/02/17/hes-a-cheatin-you-laddie/`
     },
-    {
-      id: 2,
-      title: "I don't need Cotillion, I have manners!",
-      excerpt: "A humorous take on teaching manners to teenagers, featuring cotillion classes, dress codes, and the challenges of raising well-mannered boys.",
-      date: "2016-02-10",
-      readTime: "6 min read",
-      category: "Raising Boys",
-      featured: false,
-      url: `${wordpressUrl}/2016/02/10/i-dont-need-cotillion-i-have-manners/`
-    },
-    {
-      id: 3,
-      title: "European Beaches",
-      excerpt: "Travel adventures in southern Spain, including webcam research for writing Overcaffeinated, and the reality vs. expectations of European beach destinations.",
-      date: "2016-02-03",
-      readTime: "7 min read",
-      category: "Travel",
-      featured: false,
-      url: `${wordpressUrl}/2016/02/03/european-beaches/`
-    },
-    {
-      id: 4,
-      title: "Nothing In-Between",
-      excerpt: "Reflections on working in San Diego, cultural differences between California and the Midwest, and the perspective of Californians who've never left the state.",
-      date: "2016-02-03",
-      readTime: "5 min read",
-      category: "Travel",
-      featured: false,
-      url: `${wordpressUrl}/2016/02/03/nothing-in-between/`
-    }
   ];
 
   const categories = ["All", "Golf", "Travel", "Raising Boys", "Life Advice", "Lighthouses"];

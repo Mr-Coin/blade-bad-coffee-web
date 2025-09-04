@@ -8,7 +8,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-const authorImage = "/marg.jpeg";
+const authorImage = "/dale.jpg?v=1";
 
 const About = () => {
   return (
@@ -87,7 +87,7 @@ const About = () => {
                   <p>
                     Born in Louisville, Kentucky, now in Carmel, Indiana, Dale Thomas, 
                     transitioned from engineering and real estate to writing. Inspired by 
-                    Ken Dychtwald's <em>Age Wave</em> and Napoleon Hill's <em>Think and Grow Rich</em>, 
+                    Ken Dychtwald's <em>Age Wave</em> and Napoleon Hill's <em>and Napoleon Hill's Success Through a Positive Mental Attitude </em>, 
                     he set a goal to write a novel.
                   </p>
                   <p>
