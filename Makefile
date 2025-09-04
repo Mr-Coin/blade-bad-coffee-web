@@ -50,20 +50,24 @@ install:
 	@echo "Installing dependencies with $(PACKAGE_MANAGER)..."
 	$(PACKAGE_MANAGER) install 
 
-# Deploy to GitHub Pages by building into docs/ and pushing to main
+# Deploy to GitHub Pages by syncing main, building into docs/, and pushing
 .PHONY: deploy
-deploy: build
+deploy:
+	@echo "Syncing with origin/main (rebase, autostash)..."
+	@git fetch origin
+	@git pull --rebase --autostash origin main || { echo "Rebase failed. Please resolve conflicts and re-run make deploy."; exit 1; }
+	@echo "Building project for production..."
+	@if [ "$(NODE_MODULES_EXISTS)" != "yes" ]; then \
+		echo "Dependencies not found. Installing first..."; \
+		$(PACKAGE_MANAGER) install; \
+	fi
+	$(PACKAGE_MANAGER) run build
 	@echo "Preparing GitHub Pages artifacts in docs/ ..."
-	@# Ensure docs directory exists
 	@mkdir -p docs
-	@# Create CNAME for custom domain
 	echo "www.dalethomas.com" > docs/CNAME
-	@# Ensure GitHub Pages does not run Jekyll
 	touch docs/.nojekyll
-	@# For SPA fallback on GitHub Pages, copy index.html to 404.html
 	@if [ -f docs/index.html ]; then cp docs/index.html docs/404.html; fi
 	@echo "Staging and pushing docs/ to main..."
 	@git add docs vite.config.ts Makefile
-	@# Commit if there are changes
 	@git diff --cached --quiet || git commit -m "chore: build docs for GitHub Pages and add CNAME/.nojekyll"
 	@git push origin main
