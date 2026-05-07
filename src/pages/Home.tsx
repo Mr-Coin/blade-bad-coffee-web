@@ -1,14 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
-import { Coffee, Star, Mail, Quote, BookOpen, MapPin } from "lucide-react";
+import { Coffee, Star, Quote, BookOpen, MapPin } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
+import NewsletterSignup from "@/components/NewsletterSignup";
 import hawaiiCoffeeField1 from "@/assets/hawaii-coffee-field.jpeg";
-// Import the JPG file with explicit typing
-import hawaiiCoffeeField2 from "@/assets/hawaii-coffee-field2.JPG";
-const authorImage = "/dale.jpg";
 
 const Home = () => {
   return (
@@ -32,18 +29,11 @@ const Home = () => {
             Dale Thomas, from Carmel, Indiana, a former healthcare engineer and real estate broker, 
             turned his love for coffee and imagination into his debut novel.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button asChild size="lg" className="bg-coffee-gold text-coffee-bean hover:bg-coffee-gold/90 shadow-warm text-lg px-8">
-              <Link to="/books">Buy Now</Link>
+          <div className="flex flex-col gap-6 justify-center items-center">
+            <Button asChild size="lg" className="bg-coffee-gold text-coffee-bean hover:bg-coffee-gold/90 shadow-warm text-3xl md:text-4xl px-16 py-8 font-montserrat font-bold tracking-wide">
+              <a href="https://www.amazon.com/Dangerously-Overcaffeinated-Dale-Thomas/dp/B0GZKL5RVG/ref=tmm_hrd_swatch_0" target="_blank" rel="noopener noreferrer">Buy Now</a>
             </Button>
-            <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2">
-              <Mail className="h-5 w-5" />
-              <Input 
-                placeholder="Join the adventure newsletter" 
-                className="bg-transparent border-white/30 text-white placeholder:text-white/70"
-              />
-              <Button variant="secondary" size="sm">Subscribe</Button>
-            </div>
+            <NewsletterSignup variant="hero" />
           </div>
         </div>
       </section>
@@ -163,11 +153,11 @@ const Home = () => {
             <CardContent className="p-8 md:p-12 text-center">
               <BookOpen className="h-16 w-16 mx-auto mb-6" />
               <h3 className="text-2xl md:text-3xl font-montserrat font-bold mb-4">
-                Why Self-Publishing?
+                Independent Publishing for Self-Publishing
               </h3>
               <p className="text-lg font-lora mb-4">
-                Dale chose self-publishing to get his debut novel out in the world more quickly than with mainstream publishing. 
-                This decision reflects his practical approach to life - when you have a story to tell, you tell it.
+                Dale chose independent self-publishing to bring his debut novel directly to readers,
+                without waiting on traditional gatekeepers. When you have a story to tell, you tell it.
               </p>
               <p className="text-sm opacity-80">
                 Find his novel on Amazon, where readers can discover the coffee-fueled adventures of Nicky Blade.
@@ -182,7 +172,21 @@ const Home = () => {
             What Readers Say
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
+            {/* TODO: These are placeholder reviews. Replace with real reader reviews when received. */}
+            {[
+              {
+                quote: "\u201CNicky Blade\u2019s wild adventures are pure adrenaline-fueled joy!\u201D",
+                reviewer: "Susie R"
+              },
+              {
+                quote: "\u201CAdventure, terrorism, and baseball \u2014 this book has it all, and I couldn\u2019t stop turning pages. Nicky Blade is unforgettable!\u201D",
+                reviewer: "Daniel D"
+              },
+              {
+                quote: "\u201CNicky Blade\u2019s obsession with coffee had me hooked \u2014 the fun facts, the caffeine-fueled chaos, and the wild action. Pure fun from start to finish.\u201D",
+                reviewer: "Neal M"
+              }
+            ].map((testimonial, i) => (
               <Card key={i} className="text-center hover-lift">
                 <CardContent className="p-6">
                   <div className="flex justify-center mb-4">
@@ -191,10 +195,10 @@ const Home = () => {
                     ))}
                   </div>
                   <p className="font-lora italic mb-4">
-                    "A thrilling coffee-fueled adventure that kept me turning pages all night!"
+                    {testimonial.quote}
                   </p>
-                  <p className="text-sm text-muted-foreground">
-                    Review coming soon...
+                  <p className="text-sm font-semibold text-muted-foreground">
+                    — {testimonial.reviewer}
                   </p>
                 </CardContent>
               </Card>

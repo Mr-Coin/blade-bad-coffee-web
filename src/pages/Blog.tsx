@@ -38,7 +38,7 @@ const Blog = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Header */}
         <div className="text-center mb-16">
-          <Badge className="mb-4 bg-coffee-gold text-coffee-bean">Blog</Badge>
+          <Badge className="mb-4 bg-coffee-gold text-coffee-bean">Posts</Badge>
           <h1 className="text-4xl md:text-5xl font-montserrat font-bold mb-6 bg-gradient-coffee bg-clip-text text-transparent">
             Things That Make You Go Hmmm
           </h1>

@@ -232,7 +232,7 @@ const Contact = () => {
               <CardContent className="p-6 text-center">
                 <Coffee className="h-8 w-8 mx-auto mb-3" />
                 <p className="font-lora italic text-lg">
-                  "If I don't remember you, I'll make something nice up."
+                  "If I don&rsquo;t remember you, I&rsquo;ll make up something nice."
                 </p>
                 <p className="text-sm opacity-80 mt-2">- Dale Thomas</p>
               </CardContent>

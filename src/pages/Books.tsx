@@ -19,7 +19,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import AnimatedSection from "@/components/AnimatedSection";
-import bookCover from "@/assets/book-cover.jpg";
+const bookCover = "/BookCover-DanOvrCaf.jpg";
 
 // Book data structure for unified template
 const books = [
@@ -40,14 +40,14 @@ const books = [
       "Action-packed storyline"
     ],
     pricing: {
-      digital: { price: "$9.99", format: "Kindle Edition" },
+      digital: { price: "$7.50", format: "Kindle Edition" },
       paperback: { price: "$16.99", format: "Paperback" },
       hardback: { price: "$24.99", format: "Hardback" }
     },
     actions: {
-      digital: { text: "Buy Digital", link: "#", variant: "default" },
-      paperback: { text: "Buy Paperback", link: "#", variant: "outline" },
-      hardback: { text: "Buy Hardback", link: "#", variant: "outline" }
+      digital: { text: "Buy Digital", link: "https://www.amazon.com/Dangerously-Overcaffeinated-Dale-Thomas-ebook/dp/B0GZ57G6JS/ref=tmm_kin_swatch_0", variant: "outline" },
+      paperback: { text: "Buy Paperback", link: "https://www.amazon.com/Dangerously-Overcaffeinated-Dale-Thomas/dp/B0GYFFQZ7M/ref=tmm_pap_swatch_0", variant: "outline" },
+      hardback: { text: "Buy Hardback", link: "https://www.amazon.com/Dangerously-Overcaffeinated-Dale-Thomas/dp/B0GZKL5RVG/ref=tmm_hrd_swatch_0", variant: "outline" }
     }
   },
   {
@@ -59,7 +59,7 @@ const books = [
     statusBadgeClass: "bg-coffee-gold text-coffee-bean",
     cover: null,
     icon: Mountain,
-    description: "The hero, Alexandro St. Claire, believed that the Essenes stored their writings in a series of caves to protect them from the Romans and one such cave contains writings that could impact the world's view of religion. In his quest for the thirteenth cave, St. Claire stumbles upon a mystical power that a wealthy industrialist seeks that would allow him to control commerce in the Middle East.",
+    description: "The hero, Alexandro St. Claire, believed that the Essenes, in addition to the previously discovered Dead Sea Scrolls, stored writings in an undiscovered cave that could impact the world\u2019s view of religion. In his quest for the thirteenth cave, St. Claire stumbles upon a mystical power that a wealthy industrialist seeks that would allow him to control commerce in the Middle East.",
     keyDetails: [
       "Ancient mysteries and archaeology",
       "Dead Sea Scrolls connection",
@@ -150,7 +150,7 @@ const BookTemplate = ({ book }: { book: typeof books[0] }) => {
                         <h5 className="font-semibold mb-1">Digital Edition</h5>
                         <p className="text-2xl font-bold text-accent mb-2">{book.pricing.digital.price}</p>
                         <p className="text-sm text-muted-foreground mb-3">{book.pricing.digital.format}</p>
-                        <Button asChild className="w-full bg-gradient-coffee min-h-[44px] px-8">
+                        <Button asChild variant="outline" className="w-full border-accent text-accent min-h-[44px] px-8">
                           <a href={book.actions.digital.link} target="_blank" rel="noopener noreferrer">
                             <ExternalLink className="h-4 w-4 mr-2" />
                             {book.actions.digital.text}
@@ -185,7 +185,7 @@ const BookTemplate = ({ book }: { book: typeof books[0] }) => {
                     <div className="mt-4 pt-4 border-t">
                       <p className="text-sm text-muted-foreground text-center">
                         Available exclusively on{" "}
-                        <a href="#" className="text-accent hover:underline">Amazon</a>
+                        <a href="https://www.amazon.com/Dangerously-Overcaffeinated-Dale-Thomas/dp/B0GZKL5RVG/ref=tmm_hrd_swatch_0" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">Amazon</a>
                       </p>
                     </div>
                   </div>

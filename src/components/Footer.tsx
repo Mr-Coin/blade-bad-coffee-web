@@ -1,7 +1,7 @@
-import { Coffee, Facebook, Twitter, Instagram, Mail } from "lucide-react";
+import { Coffee, Facebook, Twitter, Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import NewsletterSignup from "@/components/NewsletterSignup";
 
 const Footer = () => {
   return (
@@ -20,19 +20,11 @@ const Footer = () => {
             
             {/* Newsletter Signup */}
             <div className="space-y-2">
-              <h4 className="font-montserrat font-semibold">Stay Caffeinated</h4>
+              <h4 className="font-montserrat font-semibold">Sign up for Dale\u2019s Posts</h4>
               <p className="text-sm text-primary-foreground/70">
                 Get the latest updates on Nicky Blade's adventures
               </p>
-              <div className="flex space-x-2">
-                <Input 
-                  placeholder="Your email" 
-                  className="bg-primary-foreground/10 border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/50"
-                />
-                <Button variant="secondary" size="sm" className="shrink-0">
-                  <Mail className="h-4 w-4" />
-                </Button>
-              </div>
+              <NewsletterSignup variant="footer" />
             </div>
           </div>
 
@@ -50,7 +42,7 @@ const Footer = () => {
                 Books
               </Link>
               <Link to="/blog" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                Blog
+                Posts
               </Link>
               <Link to="/contact" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                 Contact
@@ -106,10 +98,10 @@ const Footer = () => {
         <div className="mt-8 pt-8 border-t border-primary-foreground/20">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-primary-foreground/60 text-sm">
-              © 2024 Dale Thomas. All rights reserved.
+              © {new Date().getFullYear()} Dale Thomas. All rights reserved.
             </p>
             <p className="text-primary-foreground/60 text-sm mt-2 md:mt-0">
-              "If I don't remember you, I'll make something nice up."
+              <em>"If I don&rsquo;t remember you, I&rsquo;ll make up something nice."</em>
             </p>
           </div>
         </div>
