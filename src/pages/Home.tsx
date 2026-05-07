@@ -56,7 +56,7 @@ const Home = () => {
                 The Publishing Journey
               </h3>
               <p className="text-lg font-lora leading-relaxed mb-6">
-                Dale Thomas chose self-publishing to get his debut novel out in the world.
+                Dale Thomas chose to publish independently to get his debut novel out in the world.
                 This decision reflects his practical approach to life - when you have a story to tell, you tell it.
               </p>
               <p className="text-lg font-lora leading-relaxed mb-6">
@@ -153,7 +153,7 @@ const Home = () => {
             <CardContent className="p-8 md:p-12 text-center">
               <BookOpen className="h-16 w-16 mx-auto mb-6" />
               <h3 className="text-2xl md:text-3xl font-montserrat font-bold mb-4">
-                Independent Publishing for Self-Publishing
+                Independent Publishing
               </h3>
               <p className="text-lg font-lora mb-4">
                 Dale chose independent self-publishing to bring his debut novel directly to readers,
