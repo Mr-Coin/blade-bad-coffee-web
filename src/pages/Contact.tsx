@@ -277,14 +277,12 @@ const Contact = () => {
                 <div className="flex items-start gap-4">
                   <MapPin className="h-5 w-5 text-accent mt-1" />
                   <div>
-                    <h4 className="font-semibold mb-1">Mailing Address</h4>
+                    <h4 className="font-semibold mb-1">Location</h4>
                     <div className="text-muted-foreground">
-                      <p>Dale Thomas</p>
-                      <p>3710 Zuker Court</p>
-                      <p>Carmel, IN 46032</p>
+                      <p>Carmel, IN</p>
                     </div>
                     <p className="text-sm text-muted-foreground mt-1">
-                      For fan mail and book signing requests
+                      For fan mail and book signing requests, please use the contact form
                     </p>
                   </div>
                 </div>

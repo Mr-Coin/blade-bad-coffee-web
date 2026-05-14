@@ -87,8 +87,7 @@ const Footer = () => {
             </div>
             <div className="text-sm text-primary-foreground/70 space-y-1">
               <p>Dale Thomas</p>
-              <p>3710 Zuker Court</p>
-              <p>Carmel, IN 46032</p>
+              <p>Carmel, IN</p>
               <p>317.374.6876</p>
               <p>dethomas3@att.net</p>
             </div>
